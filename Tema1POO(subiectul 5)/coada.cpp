@@ -7,6 +7,8 @@
         top = NULL;
         bottom = NULL;
     }
+
+
     coada::coada(int nrTop, int nrBottom)
     {
         if (nrBottom != NULL)
