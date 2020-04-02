@@ -11,10 +11,10 @@ int main()
     b.insertBottom(40);
     cout << a.getTop() << "\n"<< b.getBottom()<< "\n";
     c.insertTop(69);
-    cout << c.getTop() << "\n" << c.getBottom() << " "<< a.getSize();
+    cout << c.getTop() << "\n" << c.getBottom() << "\n"<< a.getSize();
     b.popTop();
     a.popBottom();
-    cout << "\n" << b.getTop() << " " << a.getBottom();
+    cout << "\n" << b.getTop() << "\n" << a.getBottom()<<'\n';
     
     a.insertTop(20);
     a.insertBottom(80);
@@ -31,14 +31,13 @@ int main()
     else cout << "NU";
     cout << "\n";
     y.insertTop(5);
-    cout << "current:\n";
     if (x > y)
         cout << "DA";
     else cout << "NU";
     cout << "\n";
     coada aaa(1,2);
     cout << aaa.getBottom()<<"\n";
-    cout << aaa;
+    cout << aaa<<endl<< "input pentru coada 2 elem:";
     cin >> aaa;
     cout <<'\n'<< aaa;
     x = aaa;
