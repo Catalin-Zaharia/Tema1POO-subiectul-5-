@@ -36,7 +36,11 @@ int main()
         cout << "DA";
     else cout << "NU";
     cout << "\n";
-    coada aaa(1);
-    cout << aaa.getBottom();
-
+    coada aaa(1,2);
+    cout << aaa.getBottom()<<"\n";
+    cout << aaa;
+    cin >> aaa;
+    cout <<'\n'<< aaa;
+    x = aaa;
+    cout << '\n' << x;
 }

@@ -7,8 +7,6 @@
         top = NULL;
         bottom = NULL;
     }
-
-
     coada::coada(int nrTop, int nrBottom)
     {
         if (nrBottom != NULL)
@@ -39,7 +37,6 @@
         elem* source = obj.top;
         elem* dest = new elem;
         top = new elem;
-        bottom = new elem;
         top->next = NULL;
         top->val = obj.top->val;
         top->prev = dest;
@@ -60,10 +57,37 @@
     }
     coada::~coada() {
         elem* current = new elem;
-        for (int i = 1; i <= size; i++)
+        current = top->prev;
+        for (int i = 1; i < size; i++)
         {
-
+            delete current->next;
+            current = current->prev;
         }
+        top = NULL;
+        bottom = NULL;
+    }
+    coada coada::operator=(const coada& obj) {//
+        this->size = obj.size;
+        elem* source = obj.top;
+        elem* dest = new elem;
+        top->next = NULL;
+        top->val = obj.top->val;
+        top->prev = dest;
+        elem* lastVisit = top;
+        source = obj.top->prev;
+        while (source != obj.bottom)
+        {
+            dest->val = source->val;
+            dest->next = lastVisit;
+            source = source->prev;
+            lastVisit = dest;
+            dest = new elem;
+        }
+        bottom = dest;
+        bottom->prev = NULL;
+        bottom->val = source->val;
+        bottom->next = lastVisit;
+        return *this;
     }
     bool coada::operator==(const coada& obj)
     {
@@ -212,3 +236,22 @@
             popBottom();
         }
     }
+    std::ostream& operator<<(std::ostream& out, const coada& obj)//
+    {
+        coada::elem* current = obj.top;
+        for (int i = 0; i < obj.size; i++) {
+            out << current->val<< " ";
+            current = current->prev;
+        }
+        return out;
+    }
+    std::istream& operator>>(std::istream& in, coada& obj)//
+    {
+        coada::elem* current = obj.top;
+        for (int i = 0; i < obj.size; i++) {
+            in >> current->val;
+            current = current->prev;
+        }
+        return in;
+    }
+    

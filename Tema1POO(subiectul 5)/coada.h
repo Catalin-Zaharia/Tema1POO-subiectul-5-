@@ -12,6 +12,7 @@ public:
     coada(int nrTop, int nrBottom=NULL);
     coada(const coada& obj);
     ~coada();
+    coada operator=(const coada& obj);
     bool operator==(const coada& obj);
     bool operator>(const coada& obj);
     bool operator<(const coada& obj);
@@ -24,4 +25,6 @@ public:
     int getSize();
     bool isVoid();
     void reverse();
+    friend std::ostream& operator<<(std::ostream& out, const coada& obj);
+    friend std::istream& operator>>(std::istream& in, coada& obj);
 };
